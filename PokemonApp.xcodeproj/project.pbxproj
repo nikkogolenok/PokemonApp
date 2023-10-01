@@ -15,6 +15,7 @@
 		44E058C42AC99EA8009C944F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 44E058C32AC99EA8009C944F /* SnapKit */; };
 		44E058C62AC9A18B009C944F /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058C52AC9A18B009C944F /* PokemonCollectionViewCell.swift */; };
 		44E058C82AC9A1D5009C944F /* PokemonViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058C72AC9A1D5009C944F /* PokemonViewController+Ext.swift */; };
+		44E058CC2ACA1679009C944F /* PokemonDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058CB2ACA1679009C944F /* PokemonDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		44E058B22AC99866009C944F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44E058C52AC9A18B009C944F /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		44E058C72AC9A1D5009C944F /* PokemonViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokemonViewController+Ext.swift"; sourceTree = "<group>"; };
+		44E058CB2ACA1679009C944F /* PokemonDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,8 @@
 		44E058BF2AC99D41009C944F /* DescriptionPokemonModul */ = {
 			isa = PBXGroup;
 			children = (
+				44E058CA2ACA163C009C944F /* View */,
+				44E058C92ACA162D009C944F /* Presenter */,
 			);
 			path = DescriptionPokemonModul;
 			sourceTree = "<group>";
@@ -142,6 +146,21 @@
 				44E058C72AC9A1D5009C944F /* PokemonViewController+Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		44E058C92ACA162D009C944F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44E058CA2ACA163C009C944F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44E058CB2ACA1679009C944F /* PokemonDescriptionViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +242,7 @@
 				44E058A92AC99863009C944F /* PokemonViewController.swift in Sources */,
 				44E058A52AC99863009C944F /* AppDelegate.swift in Sources */,
 				44E058C62AC9A18B009C944F /* PokemonCollectionViewCell.swift in Sources */,
+				44E058CC2ACA1679009C944F /* PokemonDescriptionViewController.swift in Sources */,
 				44E058C82AC9A1D5009C944F /* PokemonViewController+Ext.swift in Sources */,
 				44E058A72AC99863009C944F /* SceneDelegate.swift in Sources */,
 			);
