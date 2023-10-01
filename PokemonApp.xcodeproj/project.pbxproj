@@ -12,6 +12,7 @@
 		44E058A92AC99863009C944F /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058A82AC99863009C944F /* PokemonViewController.swift */; };
 		44E058AE2AC99866009C944F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44E058AD2AC99866009C944F /* Assets.xcassets */; };
 		44E058B12AC99866009C944F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E058AF2AC99866009C944F /* LaunchScreen.storyboard */; };
+		44E058C42AC99EA8009C944F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 44E058C32AC99EA8009C944F /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E058C42AC99EA8009C944F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +154,9 @@
 			dependencies = (
 			);
 			name = PokemonApp;
+			packageProductDependencies = (
+				44E058C32AC99EA8009C944F /* SnapKit */,
+			);
 			productName = PokemonApp;
 			productReference = 44E058A12AC99863009C944F /* PokemonApp.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +185,9 @@
 				Base,
 			);
 			mainGroup = 44E058982AC99863009C944F;
+			packageReferences = (
+				44E058C22AC99EA8009C944F /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 44E058A22AC99863009C944F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -416,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44E058C22AC99EA8009C944F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		44E058C32AC99EA8009C944F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44E058C22AC99EA8009C944F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 44E058992AC99863009C944F /* Project object */;
 }
