@@ -8,12 +8,12 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func getPokemons(offset: Int, completion: @escaping (Result<[MainPokemonData], Error>) -> Void)
+    func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, Error>) -> Void)
     func getPokemonDescription(completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
-    func getPokemons(offset: Int, completion: @escaping (Result<[MainPokemonData], Error>) -> Void) {
+    func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, Error>) -> Void) {
         let urlString = "https://pokeapi.co/api/v2/pokemon?offset=\(offset)&limit=20"
         
         guard let url = URL(string: urlString) else { return }
@@ -23,7 +23,7 @@ class NetworkService: NetworkServiceProtocol {
             print("Success")
             
             do {
-                let obj = try JSONDecoder().decode([MainPokemonData].self, from: data)
+                let obj = try JSONDecoder().decode(MainPokemonData.self, from: data)
                 completion(.success(obj))
             }
             catch {

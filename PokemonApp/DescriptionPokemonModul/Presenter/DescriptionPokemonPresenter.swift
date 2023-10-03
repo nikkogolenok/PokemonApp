@@ -31,7 +31,7 @@ class DescriptionPokemonPresenter: DescriptionPokemonPresenterProtocol {
     }
     
     func tap() {
-        
+        router?.popToRoot()
     }
     
     public func setPokemon() {

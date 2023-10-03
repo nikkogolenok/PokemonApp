@@ -149,6 +149,8 @@ class PokemonDescriptionViewController: UIViewController {
         
         addSubviewToView()
         setConstraints()
+        
+        presenter.setPokemon()
     }
     
     // MARK: - Methods
@@ -195,6 +197,7 @@ class PokemonDescriptionViewController: UIViewController {
     
     // MARK: - Action
     @objc func continueBottonAction(sender: UIButton!) {
+        self.presenter.tap()
         print("Tapped")
     }
 }
