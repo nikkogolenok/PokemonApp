@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - PokemonViewController: UICollectionViewDelegate, UICollectionViewDataSource
 extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -22,5 +23,16 @@ extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.deselectItem(at: indexPath, animated: true)
         let pokemonDescriptionViewController = PokemonDescriptionViewController()
         navigationController?.pushViewController(pokemonDescriptionViewController, animated: true)
+    }
+}
+
+// MARK: - PokemonViewController: PokemonViewProtocol 
+extension PokemonViewController: PokemonViewProtocol {
+    func success() {
+        collectionView?.reloadData()
+    }
+    
+    func failure(error: Error) {
+        print(error.localizedDescription)
     }
 }

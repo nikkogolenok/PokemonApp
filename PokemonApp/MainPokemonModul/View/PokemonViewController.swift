@@ -11,6 +11,7 @@ class PokemonViewController: UIViewController {
     
     // MARK: - Variable
     var collectionView: UICollectionView?
+    var presenter: PokemonViewPresenterProtocol!
 
     // MARK: - View Lifecycle
     override func viewDidLoad() {

@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 class PokemonDescriptionViewController: UIViewController {
+    
+    // MARK: - Variables
+    var presenter: DescriptionPokemonPresenterProtocol!
 
     // MARK: - GUI Variables
     let stackImageAndLabel: UIStackView = {
