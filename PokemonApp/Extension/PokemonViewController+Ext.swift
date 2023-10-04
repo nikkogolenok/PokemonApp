@@ -7,25 +7,22 @@
 
 import UIKit
 
-// MARK: - PokemonViewController: UICollectionViewDelegate, UICollectionViewDataSource
-extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+// MARK: - PokemonViewController: UITableViewDelegate, UITableViewDataSource
+extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.pokemons.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.indentifier, for: indexPath) as? PokemonCollectionViewCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PokemonTableViewCell.indentifier, for: indexPath) as? PokemonTableViewCell else { return UITableViewCell() }
         
         let pokemon = presenter.pokemons[indexPath.row]
-        let urlPokemon = pokemon.url
-        
-        cell.pokemonImageView.downloaded(from: urlPokemon)
-        cell.pokemonDescriptionLabel.text = pokemon.name
+        cell.pokemonNameLabel.text = pokemon.name
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pokemon = presenter.pokemons[indexPath.row]
         presenter.tapOnThePokemon(pokemon: pokemon)
     }
@@ -34,7 +31,7 @@ extension PokemonViewController: UICollectionViewDelegate, UICollectionViewDataS
 // MARK: - PokemonViewController: PokemonViewProtocol 
 extension PokemonViewController: PokemonViewProtocol {
     func success() {
-        collectionView?.reloadData()
+        tableView.reloadData()
     }
     
     func failure(error: Error) {
