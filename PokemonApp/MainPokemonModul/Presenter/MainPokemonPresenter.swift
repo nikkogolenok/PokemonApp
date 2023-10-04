@@ -15,15 +15,15 @@ protocol PokemonViewProtocol: AnyObject {
 protocol PokemonViewPresenterProtocol: AnyObject {
     init(view: PokemonViewProtocol, networkSerview: NetworkServiceProtocol, router: RouterProtocol)
     func getPokemons()
-    var pokemons: [MainPokemonData]? { get set }
-    func tapOnThePokemon(pokemon: MainPokemonData?)
+    var pokemons: [PokemonResult] { get set }
+    func tapOnThePokemon(pokemon: PokemonResult)
 }
 
 class MainPokemonPresenter: PokemonViewPresenterProtocol {
     weak var view: PokemonViewProtocol?
     var router: RouterProtocol?
     let networkService: NetworkServiceProtocol
-    var pokemons: [MainPokemonData]?
+    var pokemons: [PokemonResult] = []
     
     required init(view: PokemonViewProtocol, networkSerview: NetworkServiceProtocol, router: RouterProtocol) {
         self.view = view
@@ -32,18 +32,18 @@ class MainPokemonPresenter: PokemonViewPresenterProtocol {
         getPokemons()
     }
     
-    func tapOnThePokemon(pokemon: MainPokemonData?) {
+    func tapOnThePokemon(pokemon: PokemonResult) {
         router?.showDecription(pokemon: pokemon)
     }
     
     func getPokemons() {
-        networkService.getPokemons(offset: 1) { [weak self] result in
+        networkService.getPokemons(offset: pokemons.count) { [weak self] result in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    //self.pokemons = data.results
+                    self.pokemons = data.results
                     self.view?.success()
                 case .failure(let error):
                     self.view?.failure(error: error)

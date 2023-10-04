@@ -9,16 +9,16 @@ import Foundation
 
 // MARK: - DescriptionPokemonData
 struct DescriptionPokemonData: Codable {
-    let name:   String?
-    let height: Int?
-    let weight: Int?
-    let sprites: Sprites?
-    let types:   [PokemonType]?
+    let name:   String
+    let height: Int
+    let weight: Int
+    let sprites: Sprites
+    let types:   [PokemonType]
 }
 
 // MARK: - Sprites
 struct Sprites: Codable {
-    let frontDefaultImageURL: String
+    let frontDefaultImageURL: URL
     
     enum CodingKeys: String, CodingKey {
         case frontDefaultImageURL = "front_default"
@@ -28,9 +28,11 @@ struct Sprites: Codable {
 // MARK: - PokemonType
 struct PokemonType: Codable {
     let type: PokemonNames
+    let slot: Int
 }
 
 // MARK: - PokemonNames
 struct PokemonNames: Codable {
     let name: String
+    let url: URL
 }

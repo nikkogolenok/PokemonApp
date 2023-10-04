@@ -14,11 +14,12 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initalViewController()
-    func showDecription(pokemon: MainPokemonData?)
+    func showDecription(pokemon: PokemonResult)
     func popToRoot()
 }
 
 class Router: RouterProtocol {
+    
     var navigationController: UINavigationController?
     var assemblyBuilder: AsselderBuilberProtocol?
     
@@ -34,7 +35,7 @@ class Router: RouterProtocol {
         }
     }
     
-    func showDecription(pokemon: MainPokemonData?) {
+    func showDecription(pokemon: PokemonResult) {
         if let navigationController = navigationController {
             guard let descriptionViewController = assemblyBuilder?.createDescriptionPokemonModule(pokemon: pokemon, router: self) else { return }
             navigationController.pushViewController(descriptionViewController, animated: true)

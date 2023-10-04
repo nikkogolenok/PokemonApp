@@ -9,7 +9,7 @@ import UIKit
 
 protocol AsselderBuilberProtocol {
     func createMainPokemonModule(router: RouterProtocol) -> UIViewController
-    func createDescriptionPokemonModule(pokemon: MainPokemonData?, router: RouterProtocol) -> UIViewController
+    func createDescriptionPokemonModule(pokemon: PokemonResult, router: RouterProtocol) -> UIViewController
 }
 
 class AsselderModuleBuilder: AsselderBuilberProtocol {
@@ -22,7 +22,7 @@ class AsselderModuleBuilder: AsselderBuilberProtocol {
         return view
     }
     
-    func createDescriptionPokemonModule(pokemon: MainPokemonData?, router: RouterProtocol) -> UIViewController {
+    func createDescriptionPokemonModule(pokemon: PokemonResult, router: RouterProtocol) -> UIViewController {
         let view = PokemonDescriptionViewController()
         let networkService = NetworkService()
         let presenter = DescriptionPokemonPresenter(view: view, networkService: networkService, router: router, pokemon: pokemon)

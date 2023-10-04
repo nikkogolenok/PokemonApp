@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44B446EA2ACDC0CF00CFE686 /* ImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B446E92ACDC0CF00CFE686 /* ImageView+Ext.swift */; };
 		44E058A52AC99863009C944F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058A42AC99863009C944F /* AppDelegate.swift */; };
 		44E058A72AC99863009C944F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058A62AC99863009C944F /* SceneDelegate.swift */; };
 		44E058A92AC99863009C944F /* PokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E058A82AC99863009C944F /* PokemonViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44B446E92ACDC0CF00CFE686 /* ImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Ext.swift"; sourceTree = "<group>"; };
 		44E058A12AC99863009C944F /* PokemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E058A42AC99863009C944F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44E058A62AC99863009C944F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				44E058C72AC9A1D5009C944F /* PokemonViewController+Ext.swift */,
 				44E058FB2ACBFADA009C944F /* PokemonDescriptionViewController+Ext.swift */,
+				44B446E92ACDC0CF00CFE686 /* ImageView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				44E058FA2ACBF7AD009C944F /* DescriptionPokemonPresenter.swift in Sources */,
 				44E058CC2ACA1679009C944F /* PokemonDescriptionViewController.swift in Sources */,
 				44E058C82AC9A1D5009C944F /* PokemonViewController+Ext.swift in Sources */,
+				44B446EA2ACDC0CF00CFE686 /* ImageView+Ext.swift in Sources */,
 				44E058F12ACBE6A2009C944F /* MainPokemonData.swift in Sources */,
 				44E058F82ACBEF87009C944F /* NetworkService.swift in Sources */,
 				44E058A72AC99863009C944F /* SceneDelegate.swift in Sources */,

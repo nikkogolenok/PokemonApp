@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, Error>) -> Void)
-    func getPokemonDescription(completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void)
+    func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -33,10 +33,9 @@ class NetworkService: NetworkServiceProtocol {
         .resume()
     }
     
-    func getPokemonDescription(completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void) {
-        let urlString = "https://pokeapi.co/api/v2/pokemon/%7Bid%7D/"
-        
-        guard let url = URL(string: urlString) else { return }
+    func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void) {
+        //let urlString = "https://pokeapi.co/api/v2/pokemon/%7Bid%7D/"
+        //guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { date, response, error in
             guard let date = date, error == nil, response != nil else { return }
