@@ -34,8 +34,6 @@ class NetworkService: NetworkServiceProtocol {
     }
     
     func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void) {
-        //let urlString = "https://pokeapi.co/api/v2/pokemon/%7Bid%7D/"
-        //guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { date, response, error in
             guard let date = date, error == nil, response != nil else { return }
