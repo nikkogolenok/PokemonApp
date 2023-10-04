@@ -31,7 +31,7 @@ class PokemonDescriptionViewController: UIViewController {
         stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fill
-        stack.spacing = 50
+        stack.spacing = 30
         
         return stack
     }()
@@ -42,7 +42,7 @@ class PokemonDescriptionViewController: UIViewController {
         stack.axis = .vertical
         stack.alignment = .leading
         stack.distribution = .fill
-        stack.spacing = 50
+        stack.spacing = 30
         
         return stack
     }()
@@ -53,7 +53,7 @@ class PokemonDescriptionViewController: UIViewController {
         stack.axis = .vertical
         stack.alignment = .leading
         stack.distribution = .fill
-        stack.spacing = 50
+        stack.spacing = 30
         
         return stack
     }()
@@ -74,6 +74,15 @@ class PokemonDescriptionViewController: UIViewController {
         label.textColor = .white
         label.textAlignment = .natural
         label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    let pokemonNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "PokemonName:"
+        label.textColor = .white
         
         return label
     }()
@@ -100,6 +109,15 @@ class PokemonDescriptionViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "PokemonHeight:"
+        label.textColor = .white
+        
+        return label
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Name"
         label.textColor = .white
         
         return label
@@ -156,7 +174,6 @@ class PokemonDescriptionViewController: UIViewController {
     // MARK: - Methods
     private func addSubviewToView() {
         view.addSubview(stackImageAndLabel)
-        view.addSubview(stackImageAndLabel)
         stackImageAndLabel.addArrangedSubview(pokemonImageView)
         stackImageAndLabel.addArrangedSubview(pokemonDescriptionLabel)
         
@@ -164,10 +181,12 @@ class PokemonDescriptionViewController: UIViewController {
         stackOfStacks.addArrangedSubview(stackOfLabels)
         stackOfStacks.addArrangedSubview(stackOfValues)
         
+        stackOfLabels.addArrangedSubview(pokemonNameLabel)
         stackOfLabels.addArrangedSubview(pokemonTypeLabel)
         stackOfLabels.addArrangedSubview(pokemonWeightLabel)
         stackOfLabels.addArrangedSubview(pokemonHeightLabel)
         
+        stackOfValues.addArrangedSubview(nameLabel)
         stackOfValues.addArrangedSubview(typeLabel)
         stackOfValues.addArrangedSubview(weightLabel)
         stackOfValues.addArrangedSubview(heightLabel)
