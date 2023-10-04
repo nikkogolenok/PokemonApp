@@ -14,15 +14,13 @@ class PokemonDescriptionViewController: UIViewController {
     var presenter: DescriptionPokemonPresenterProtocol!
 
     // MARK: - GUI Variables
-    let stackImageAndLabel: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.alignment = .top
-        stack.distribution = .fillEqually
-        stack.spacing = 5
+    let pokemonImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "clock")
+        imageView.contentMode = .center
         
-        return stack
+        return imageView
     }()
     
     let stackOfStacks: UIStackView = {
@@ -56,26 +54,6 @@ class PokemonDescriptionViewController: UIViewController {
         stack.spacing = 30
         
         return stack
-    }()
-    
-    let pokemonImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "clock")
-        imageView.contentMode = .center
-        
-        return imageView
-    }()
-    
-    let pokemonDescriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Bulbasaur can be seen napping in bright sunlight.\nThere is a seed on its back. By soaking up the sun’s rays,\nthe seed grows progressively larger."
-        label.textColor = .white
-        label.textAlignment = .natural
-        label.numberOfLines = 0
-        
-        return label
     }()
     
     let pokemonNameLabel: UILabel = {
@@ -173,9 +151,7 @@ class PokemonDescriptionViewController: UIViewController {
     
     // MARK: - Methods
     private func addSubviewToView() {
-        view.addSubview(stackImageAndLabel)
-        stackImageAndLabel.addArrangedSubview(pokemonImageView)
-        stackImageAndLabel.addArrangedSubview(pokemonDescriptionLabel)
+        view.addSubview(pokemonImageView)
         
         view.addSubview(stackOfStacks)
         stackOfStacks.addArrangedSubview(stackOfLabels)
@@ -195,14 +171,13 @@ class PokemonDescriptionViewController: UIViewController {
     }
     
     private func setConstraints() {
-        stackImageAndLabel.snp.makeConstraints { make in
+        pokemonImageView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30)
-            make.leading.equalTo(5)
-            make.trailing.equalTo(5)
+            make.centerX.equalTo(self.view)
         }
         
         stackOfStacks.snp.makeConstraints { make in
-            make.top.equalTo(stackImageAndLabel.snp.bottom).offset(100)
+            make.top.equalTo(pokemonImageView.snp.bottom).offset(100)
             make.centerX.equalTo(self.view.center.x)
         }
         
