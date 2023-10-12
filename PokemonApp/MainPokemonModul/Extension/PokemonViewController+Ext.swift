@@ -26,6 +26,12 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
         let pokemon = presenter.pokemons[indexPath.row]
         presenter.tapOnThePokemon(pokemon: pokemon)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (((scrollView.contentOffset.y + scrollView.frame.size.height) > scrollView.contentSize.height)) {
+            self.presenter.getPokemons()
+        }
+    }
 }
 
 // MARK: - PokemonViewController: PokemonViewProtocol 

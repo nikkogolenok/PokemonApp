@@ -43,7 +43,7 @@ final class MainPokemonPresenter: PokemonViewPresenterProtocol {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    self.pokemons = data.results
+                    self.pokemons.append(contentsOf: data.results)
                     self.view?.success()
                 case .failure(let error):
                     self.view?.failure(error: error)
