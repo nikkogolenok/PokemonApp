@@ -12,7 +12,7 @@ protocol AsselderBuilberProtocol {
     func createDescriptionPokemonModule(pokemon: PokemonResult, router: RouterProtocol) -> UIViewController
 }
 
-class AsselderModuleBuilder: AsselderBuilberProtocol {
+final class AsselderModuleBuilder: AsselderBuilberProtocol {
     func createMainPokemonModule(router: RouterProtocol) -> UIViewController {
         let view = PokemonViewController()
         let networkService = NetworkService()

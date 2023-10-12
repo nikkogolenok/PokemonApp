@@ -17,7 +17,7 @@ protocol DescriptionPokemonPresenterProtocol: AnyObject {
     func tap()
 }
 
-class DescriptionPokemonPresenter: DescriptionPokemonPresenterProtocol {
+final class DescriptionPokemonPresenter: DescriptionPokemonPresenterProtocol {
     weak var view: DescriptionPokemonViewProtocol?
     var router: RouterProtocol?
     let networkService: NetworkServiceProtocol
@@ -34,9 +34,7 @@ class DescriptionPokemonPresenter: DescriptionPokemonPresenterProtocol {
         router?.popToRoot()
     }
     
-    
     public func setPokemon() {
-        
         networkService.getPokemonDescription(url: pokemon.url) { [weak self] result in
             switch result {
             case .success(let pokemon):

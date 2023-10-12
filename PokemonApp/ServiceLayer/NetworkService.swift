@@ -12,7 +12,7 @@ protocol NetworkServiceProtocol {
     func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void)
 }
 
-class NetworkService: NetworkServiceProtocol {
+final class NetworkService: NetworkServiceProtocol {
     func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, Error>) -> Void) {
         let urlString = "https://pokeapi.co/api/v2/pokemon?offset=\(offset)&limit=20"
         

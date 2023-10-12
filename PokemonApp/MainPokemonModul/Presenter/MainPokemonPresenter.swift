@@ -19,7 +19,7 @@ protocol PokemonViewPresenterProtocol: AnyObject {
     func tapOnThePokemon(pokemon: PokemonResult)
 }
 
-class MainPokemonPresenter: PokemonViewPresenterProtocol {
+final class MainPokemonPresenter: PokemonViewPresenterProtocol {
     weak var view: PokemonViewProtocol?
     var router: RouterProtocol?
     let networkService: NetworkServiceProtocol

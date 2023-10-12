@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PokemonDescriptionViewController: UIViewController {
+final class PokemonDescriptionViewController: UIViewController {
     
     // MARK: - Variables
     var presenter: DescriptionPokemonPresenterProtocol!
