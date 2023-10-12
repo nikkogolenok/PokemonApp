@@ -61,6 +61,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44C3039C2AD8024000794B33 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				44E058C72AC9A1D5009C944F /* PokemonViewController+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		44C3039D2AD8026100794B33 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				44E058FB2ACBFADA009C944F /* PokemonDescriptionViewController+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		44E058982AC99863009C944F = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +124,7 @@
 				44E058BC2AC99CC5009C944F /* Model */,
 				44E058BB2AC99CBA009C944F /* View */,
 				44E058BA2AC99C9E009C944F /* Presenter */,
+				44C3039C2AD8024000794B33 /* Extension */,
 			);
 			path = MainPokemonModul;
 			sourceTree = "<group>";
@@ -152,6 +169,7 @@
 				44E058F22ACBEC58009C944F /* Model */,
 				44E058CA2ACA163C009C944F /* View */,
 				44E058C92ACA162D009C944F /* Presenter */,
+				44C3039D2AD8026100794B33 /* Extension */,
 			);
 			path = DescriptionPokemonModul;
 			sourceTree = "<group>";
@@ -167,8 +185,6 @@
 		44E058C12AC99DB9009C944F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				44E058C72AC9A1D5009C944F /* PokemonViewController+Ext.swift */,
-				44E058FB2ACBFADA009C944F /* PokemonDescriptionViewController+Ext.swift */,
 				44B446E92ACDC0CF00CFE686 /* ImageView+Ext.swift */,
 			);
 			path = Extension;
