@@ -171,21 +171,21 @@ final class PokemonDescriptionViewController: UIViewController {
     }
     
     private func setConstraints() {
-        pokemonImageView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30)
-            make.centerX.equalTo(self.view)
+        pokemonImageView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(30)
+            $0.centerX.equalTo(self.view)
         }
         
-        stackOfStacks.snp.makeConstraints { make in
-            make.top.equalTo(pokemonImageView.snp.bottom).offset(100)
-            make.centerX.equalTo(self.view.center.x)
+        stackOfStacks.snp.makeConstraints {
+            $0.top.equalTo(pokemonImageView.snp.bottom).offset(100)
+            $0.centerX.equalTo(self.view.center.x)
         }
         
-        continueBotton.snp.makeConstraints { make in
-            make.top.equalTo(stackOfStacks.snp.bottom).offset(150)
-            make.leading.equalTo(20)
-            make.trailing.equalTo(-20)
-            make.height.equalTo(50)
+        continueBotton.snp.makeConstraints {
+            $0.top.equalTo(stackOfStacks.snp.bottom).offset(150)
+            $0.leading.equalTo(20)
+            $0.trailing.equalTo(-20)
+            $0.height.equalTo(50)
         }
     }
     

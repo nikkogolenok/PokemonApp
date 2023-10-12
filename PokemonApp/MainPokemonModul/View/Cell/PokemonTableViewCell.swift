@@ -39,9 +39,9 @@ class PokemonTableViewCell: UITableViewCell {
     
     // MARK: - Method
     func setConstraints() {
-        pokemonNameLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView)
-            make.leading.equalTo(contentView).offset(20)
+        pokemonNameLabel.snp.makeConstraints {
+            $0.centerY.equalTo(contentView)
+            $0.leading.equalTo(contentView).offset(20)
         }
     }
 }

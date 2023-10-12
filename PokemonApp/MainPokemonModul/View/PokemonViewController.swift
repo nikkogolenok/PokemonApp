@@ -25,8 +25,8 @@ final class PokemonViewController: UIViewController {
     // MARK: - Methods
     func createTableView() {
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        tableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
             tableView.delegate = self
             tableView.dataSource = self
             tableView.register(PokemonTableViewCell.self, forCellReuseIdentifier: PokemonTableViewCell.indentifier)
