@@ -7,45 +7,60 @@
 
 import Foundation
 
+struct NetworkError: Error {
+    let code: Int
+    let description: String
+    var message: String {
+        "Error: \n\(description)"
+    }
+}
+
 protocol NetworkServiceProtocol {
-    func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, Error>) -> Void)
-    func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void)
+    func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, NetworkError>) -> Void)
+    func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, NetworkError>) -> Void)
 }
 
 final class NetworkService: NetworkServiceProtocol {
-    func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, Error>) -> Void) {
-        let urlString = "https://pokeapi.co/api/v2/pokemon?offset=\(offset)&limit=20"
-        
-        guard let url = URL(string: urlString) else { return }
-        
+    private let baseURL = "https://pokeapi.co/api/v2"
+    
+    private func fetchData<T: Decodable>(url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil, response != nil else { return }
-            print("Success")
             
-            do {
-                let obj = try JSONDecoder().decode(MainPokemonData.self, from: data)
-                completion(.success(obj))
+            let httpResponse = response as? HTTPURLResponse
+            let code = httpResponse?.statusCode
+            guard let code = code else { return }
+            
+            if let error = error {
+                completion(.failure(NetworkError(code: code, description: error.localizedDescription)))
+                return
             }
-            catch {
-                completion(.failure(error))
+            
+            guard let response = httpResponse, 200...299 ~= response.statusCode else {
+                completion(.failure(NetworkError(code: code, description: "Something went wrong")))
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let obj = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(obj))
+                } catch {
+                    completion(.failure(NetworkError(code: code, description: "Error parsing data")))
+                }
+            } else {
+                completion(.failure(NetworkError(code: code, description: "No data received")))
             }
         }
         .resume()
     }
     
-    func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, Error>) -> Void) {
-        
-        URLSession.shared.dataTask(with: url) { date, response, error in
-            guard let date = date, error == nil, response != nil else { return }
-            
-            do {
-                let obj = try JSONDecoder().decode(DescriptionPokemonData.self, from: date)
-                completion(.success(obj))
-            }
-            catch {
-                completion(.failure(error))
-            }
-        }
-        .resume()
+    func getPokemons(offset: Int, completion: @escaping (Result<MainPokemonData, NetworkError>) -> Void) {
+        let urlString = baseURL + "/pokemon?offset=\(offset)&limit=20"
+        guard let url = URL(string: urlString) else { return }
+        fetchData(url: url, completion: completion)
+    }
+    
+    func getPokemonDescription(url: URL, completion: @escaping (Result<DescriptionPokemonData, NetworkError>) -> Void) {
+        fetchData(url: url, completion: completion)
     }
 }
