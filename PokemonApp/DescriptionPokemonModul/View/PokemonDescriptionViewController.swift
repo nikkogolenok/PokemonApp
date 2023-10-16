@@ -8,125 +8,32 @@
 import UIKit
 import SnapKit
 
+enum ConstantsOfConstraints: CGFloat, ConstraintOffsetTarget {
+    case pokemonImageViewTop = 30
+    case stackOfStacksTop = 100
+    case continueBottonTop = 150
+    case continueBottonWight = 250
+    case continueBottonHeight = 50
+}
+
 final class PokemonDescriptionViewController: UIViewController {
     
     // MARK: - Variables
     var presenter: DescriptionPokemonPresenterProtocol!
 
     // MARK: - GUI Variables
-    let pokemonImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "clock")
-        imageView.contentMode = .center
-        
-        return imageView
-    }()
-    
-    let stackOfStacks: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .horizontal
-        stack.alignment = .fill
-        stack.distribution = .fill
-        stack.spacing = 30
-        
-        return stack
-    }()
-    
-    let stackOfLabels: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.distribution = .fill
-        stack.spacing = 30
-        
-        return stack
-    }()
-    
-    let stackOfValues: UIStackView = {
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .leading
-        stack.distribution = .fill
-        stack.spacing = 30
-        
-        return stack
-    }()
-    
-    let pokemonNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PokemonName:"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let pokemonTypeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PokemonType:"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let pokemonWeightLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PokemonWeight:"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let pokemonHeightLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PokemonHeight:"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Name"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let typeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Type"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let weightLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Weight"
-        label.textColor = .white
-        
-        return label
-    }()
-    
-    let heightLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Height"
-        label.textColor = .white
-        
-        return label
-    }()
+    private let stackOfStacks = CustomFactoryElements.createHorizontalStack()
+    private let stackOfLabels = CustomFactoryElements.createVerticalStack()
+    private let stackOfValues = CustomFactoryElements.createVerticalStack()
+    private let pokemonNameLabel = CustomFactoryElements.createLabelName(name: "PokemonName:")
+    private let pokemonTypeLabel = CustomFactoryElements.createLabelName(name: "PokemonType:")
+    private let pokemonWeightLabel = CustomFactoryElements.createLabelName(name: "PokemonWeight:")
+    private let pokemonHeightLabel = CustomFactoryElements.createLabelName(name: "PokemonHeight:")
+    let pokemonImageView = CustomFactoryElements.createImage()
+    let nameLabel = CustomFactoryElements.createLabel()
+    let typeLabel = CustomFactoryElements.createLabel()
+    let weightLabel = CustomFactoryElements.createLabel()
+    let heightLabel = CustomFactoryElements.createLabel()
     
     let continueBotton: UIButton = {
         let button = UIButton()
@@ -142,31 +49,25 @@ final class PokemonDescriptionViewController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         addSubviewToView()
         setConstraints()
-        
         presenter.setPokemon()
     }
     
     // MARK: - Methods
     private func addSubviewToView() {
         view.addSubview(pokemonImageView)
-        
         view.addSubview(stackOfStacks)
         stackOfStacks.addArrangedSubview(stackOfLabels)
         stackOfStacks.addArrangedSubview(stackOfValues)
-        
         stackOfLabels.addArrangedSubview(pokemonNameLabel)
         stackOfLabels.addArrangedSubview(pokemonTypeLabel)
         stackOfLabels.addArrangedSubview(pokemonWeightLabel)
         stackOfLabels.addArrangedSubview(pokemonHeightLabel)
-        
         stackOfValues.addArrangedSubview(nameLabel)
         stackOfValues.addArrangedSubview(typeLabel)
         stackOfValues.addArrangedSubview(weightLabel)
         stackOfValues.addArrangedSubview(heightLabel)
-        
         view.addSubview(continueBotton)
     }
     
@@ -190,8 +91,7 @@ final class PokemonDescriptionViewController: UIViewController {
     }
     
     // MARK: - Action
-    @objc func continueBottonAction(sender: UIButton!) {
+    @objc private func continueBottonAction(sender: UIButton!) {
         self.presenter.tap()
-        print("Tapped")
     }
 }

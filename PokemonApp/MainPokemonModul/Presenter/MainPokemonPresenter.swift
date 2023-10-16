@@ -10,6 +10,7 @@ import Foundation
 protocol PokemonViewProtocol: AnyObject {
     func success()
     func failure(error: Error)
+    func showAlert(message: String, completion:(() -> Void)?)
 }
 
 protocol PokemonViewPresenterProtocol: AnyObject {
@@ -39,14 +40,17 @@ final class MainPokemonPresenter: PokemonViewPresenterProtocol {
     func getPokemons() {
         networkService.getPokemons(offset: pokemons.count) { [weak self] result in
             guard let self = self else { return }
-            
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
                     self.pokemons.append(contentsOf: data.results)
                     self.view?.success()
                 case .failure(let error):
-                    self.view?.failure(error: error)
+                    var message = error.description
+                    if error.code == 404 {
+                        message = "Opps, this pokemon doesn't exist"
+                    }
+                    self.view?.showAlert(message: message, completion: nil)
                 }
             }
         }

@@ -8,37 +8,27 @@
 import UIKit
 import SnapKit
 
-class PokemonTableViewCell: UITableViewCell {
+final class PokemonTableViewCell: UITableViewCell {
     
     // MARK: - Variable
     static let indentifier = "PokemonTableViewCell"
     
     // MARK: - GUI Variables
-    let pokemonNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Name"
-        
-        return label
-    }()
+    let pokemonNameLabel = CustomFactoryElements.createLabel()
     
     // MARK: - View Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(pokemonNameLabel)
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setConstraints()
-    }
-    
-    // MARK: - Method
-    func setConstraints() {
+  
+    // MARK: - Method create constraints
+    private func setConstraints() {
         pokemonNameLabel.snp.makeConstraints {
             $0.centerY.equalTo(contentView)
             $0.leading.equalTo(contentView).offset(20)

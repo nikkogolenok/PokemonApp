@@ -7,21 +7,8 @@
 
 import UIKit
 
-// MARK: - PokemonViewController: UITableViewDelegate, UITableViewDataSource
-extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.pokemons.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PokemonTableViewCell.indentifier, for: indexPath) as? PokemonTableViewCell else { return UITableViewCell() }
-        
-        let pokemon = presenter.pokemons[indexPath.row]
-        cell.pokemonNameLabel.text = pokemon.name
-        
-        return cell
-    }
-    
+// MARK: - PokemonViewController: UITableViewDelegate
+extension PokemonViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pokemon = presenter.pokemons[indexPath.row]
         presenter.tapOnThePokemon(pokemon: pokemon)
@@ -34,6 +21,20 @@ extension PokemonViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - PokemonViewController: UITableViewDataSource
+extension PokemonViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.pokemons.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PokemonTableViewCell.indentifier, for: indexPath) as? PokemonTableViewCell else { return UITableViewCell() }
+        let pokemon = presenter.pokemons[indexPath.row]
+        cell.pokemonNameLabel.text = pokemon.name
+        return cell
+    }
+}
+
 // MARK: - PokemonViewController: PokemonViewProtocol 
 extension PokemonViewController: PokemonViewProtocol {
     func success() {
@@ -42,5 +43,12 @@ extension PokemonViewController: PokemonViewProtocol {
     
     func failure(error: Error) {
         print(error.localizedDescription)
+    }
+    
+    func showAlert(message: String, completion: (() -> Void)?) {
+        let alertController = UIAlertController(title: "Network error", message: message, preferredStyle: .alert)
+        let cancelAlert = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAlert)
+        self.present(alertController, animated: true)
     }
 }

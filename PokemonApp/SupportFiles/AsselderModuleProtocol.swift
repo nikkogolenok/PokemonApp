@@ -18,7 +18,6 @@ final class AsselderModuleBuilder: AsselderBuilberProtocol {
         let networkService = NetworkService()
         let presenter = MainPokemonPresenter(view: view, networkSerview: networkService, router: router)
         view.presenter = presenter
-        
         return view
     }
     
@@ -27,7 +26,6 @@ final class AsselderModuleBuilder: AsselderBuilberProtocol {
         let networkService = NetworkService()
         let presenter = DescriptionPokemonPresenter(view: view, networkService: networkService, router: router, pokemon: pokemon)
         view.presenter = presenter
-        
         return view
     }
 }

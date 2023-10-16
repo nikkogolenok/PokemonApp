@@ -22,8 +22,8 @@ final class PokemonViewController: UIViewController {
         createTableView()
     }
     
-    // MARK: - Methods
-    func createTableView() {
+    // MARK: - Methods add tableView, registration tableViewCell and give standart methods
+    private func createTableView() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
